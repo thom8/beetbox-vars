@@ -1,0 +1,11 @@
+# Prevent Vagrant related files.
+
+.bundle/
+.vagrant/
+docroot/
+Vagrantfile.bb
+
+# Composer.
+composer.lock
+vendor/
+components/

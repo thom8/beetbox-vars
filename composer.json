@@ -1,0 +1,8 @@
+{
+    "require": {
+        "components/jquery": "1.9.*",
+        "symfony/yaml": "~3.0",
+        "twbs/bootstrap": "~3.3",
+        "twig/twig": "~1.0"
+    }
+}

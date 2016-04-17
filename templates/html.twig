@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Beetbox variables</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="col-xs-2"> <!-- required for floating -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left">
+        {% for name,role in role_map %}
+            <li class="tab {{ (name == 'beetbox') ? ' active' }}"><a href="#{{ name|replace({'.': '_'}) }}" data-toggle="tab">{{ name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="col-xs-10">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        {% for name,role in role_map %}
+            <div class="tab-pane{{ (name == 'beetbox') ? ' active' }}" id="{{ name|replace({'.': '_'}) }}">
+                {% for var,val in role %}
+                    <pre><label>{{ var }}:</label> {{ vars[var]|default('""') }}</pre>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="components/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $('.tab').click(function() {
+        $('html, body').stop().animate({ scrollTop: 0}, 500);
+    });
+</script>
+
+</body>
+</html>
